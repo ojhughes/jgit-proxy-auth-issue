@@ -1,0 +1,31 @@
+group 'jgit-proxy-auth'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'me.ohughes.example.JgitProxyExample'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+run {
+    if (project.hasProperty("appArgs")) {
+        args Eval.me(appArgs)
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'me.ohughes.example.JgitProxyExample'
+    }
+}
+
+dependencies {
+    compile "org.eclipse.jgit:org.eclipse.jgit:4.6.1.201703071140-r"
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
