@@ -3,6 +3,7 @@ package me.ohughes.example;
 import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.util.CachedAuthenticator;
 import org.eclipse.jgit.util.FileUtils;
 
 import java.io.File;
@@ -48,7 +49,8 @@ public class JgitProxyExample {
             );
 
             jgitProxyExample.configureProxy();
-            jgitProxyExample.cloneRepo("https://github.com/ojhughes/config-source-2", clonePath.toFile());
+            Git git = jgitProxyExample.cloneRepo("https://github.com/ojhughes/config-source-2", clonePath.toFile());
+            System.out.println("Git branches" + git.branchList().call().toString());
         } catch (IOException | GitAPIException e) {
             e.printStackTrace();
         } finally {
