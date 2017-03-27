@@ -1,0 +1,6 @@
+---
+  name: proxy-auth-test
+  path: build/libs/example-1.0-SNAPSHOT-all.jar
+  no-route: true
+  env:
+    JBP_CONFIG_JAVA_MAIN: '{ arguments: "proxy-auth.rgb.springapps.io 3128 proxyuser proxypassword" }'
