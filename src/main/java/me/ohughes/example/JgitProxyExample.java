@@ -3,6 +3,8 @@ package me.ohughes.example;
 import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.transport.HttpTransport;
+import org.eclipse.jgit.transport.http.apache.HttpClientConnectionFactory;
 import org.eclipse.jgit.util.CachedAuthenticator;
 import org.eclipse.jgit.util.FileUtils;
 
@@ -37,6 +39,7 @@ public class JgitProxyExample {
     }
 
     public static void main(String[] args) throws Exception {
+        HttpTransport.setConnectionFactory(new HttpClientConnectionFactory());
         Path path = Paths.get(CLONE_PATH);
         try {
 

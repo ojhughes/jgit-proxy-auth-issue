@@ -12,6 +12,9 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
+    maven {
+        url "https://repo.eclipse.org/content/groups/releases"
+    }
     mavenCentral()
 }
 
@@ -21,6 +24,7 @@ run {
     }
 }
 shadowJar {
+    append "log4j.properties"
     manifest {
         attributes 'Implementation-Title': 'JGit proxy test',
                 'Implementation-Version': project.version,
@@ -29,7 +33,10 @@ shadowJar {
 }
 
 dependencies {
+    compile "org.slf4j:slf4j-api:1.7.5"
+    compile "org.slf4j:slf4j-log4j12:1.7.5"
     compile "org.eclipse.jgit:org.eclipse.jgit:4.6.1.201703071140-r"
+    compile "org.eclipse.jgit.feature:org.eclipse.jgit.http.apache:4.6.1.201703071140-r"
 }
 
 jar {
@@ -38,4 +45,3 @@ jar {
         )
     }
 }
-
