@@ -23,6 +23,7 @@ run {
         args Eval.me(appArgs)
     }
 }
+
 shadowJar {
     append "log4j.properties"
     manifest {
@@ -39,9 +40,6 @@ dependencies {
     compile "org.eclipse.jgit.feature:org.eclipse.jgit.http.apache:4.6.1.201703071140-r"
 }
 
-jar {
-    manifest {
-        attributes('Main-Class': 'me.ohughes.example.JgitProxyExample',
-        )
-    }
-}
+
+jar.dependsOn shadowJar
+
