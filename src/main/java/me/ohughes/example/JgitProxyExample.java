@@ -70,6 +70,7 @@ public class JgitProxyExample {
         System.setProperty(HTTPS_PROXY_USER_KEY, this.proxyUser);
         System.setProperty(HTTPS_PROXY_PASS_KEY, this.proxyPassword);
         Authenticator.setDefault(new ProxyAuthenticator(this.proxyUser, this.proxyPassword));
+        CachedAuthenticator.add(new CachedAuthenticator.CachedAuthentication(this.proxyHost, this.proxyPort, this.proxyUser, this.proxyPassword));
     }
 
     private Git cloneRepo(String uri, File clonePath) throws GitAPIException {
